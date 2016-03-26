@@ -5,30 +5,31 @@
 */
 
 1.js 内置对象
-常见内置对象：String, Math, Array, Date对象
-var string = new String(“hello world”); or var string = “hello world” 后者在后台进行对象转换
-string’s attr:
-length没有’\0’结尾。
+    1.0 常见内置对象：String, Math, Array, Date对象
+    1.1 String
+        var string = new String(“hello world”); or var string = “hello world” 后者在后台进行对象转换
+        string’s attr: length没有’\0’结尾
 
-indexOf(目标子字符串，起始位（基于0）)-正序查找
-lastIndexOf(同上）-倒序查找
-//返回首次查到的首字母位置，基于0，区分大小写
-// return value: not found: -1
-// js严格区分大小写
+        indexOf(目标子字符串，起始位（基于0）)-正序查找
+        lastIndexOf(同上）-倒序查找
+        //返回首次查到的首字母位置，基于0，区分大小写
+        // return value: not found: -1
+        // js严格区分大小写
 
 
 
 2.浏览器的对象组成
-    window -对应浏览器窗口 方法：alert() prompt()
-    document-页面本身：write()
-    页面上写入的html代码标签对应的对象，eg. img。
-    ps.
-    DOM: Document Object Model（文本对象模型）
-    BOM: Browser Object Model: 浏览器为js提供的对象集合
-    区分 document and window :
-    document: html 页面
-    window ： 浏览器串口或者框架和相关所有内容（滚动条和导航栏图标，包含 document 对象）
-    BOM对象：内置对象：Date String 人工创建使用; Math 直接使用—————html代码的对象: img人工创建使用
+    2.0 introduction
+        window -对应浏览器窗口 方法：alert() prompt()
+        document-页面本身：write()
+        页面上写入的html代码标签对应的对象，eg. img。
+        ps.
+        DOM: Document Object Model（文本对象模型）
+        BOM: Browser Object Model: 浏览器为js提供的对象集合
+        区分 document and window :
+        document: html 页面
+        window ： 浏览器串口或者框架和相关所有内容（滚动条和导航栏图标，包含 document 对象）
+        BOM对象：内置对象：Date String 人工创建使用; Math 直接使用—————html代码的对象: img人工创建使用
 
     2.1 window Object
         全局对象，所有全局对象和全局函数都是 window 对象的方法和属性（属性也可能是对象如：
@@ -56,7 +57,8 @@ lastIndexOf(同上）-倒序查找
 
 9.数据类型与操作
 
-10.JSON（JavaScript Object Natation）-格式容易进行串行化和反串行化
+10.JSON（JavaScript Object Natation）
+    10.0 特点：格式容易进行串行化和反串行化
     10.1 串行化：对象转化为字符串表示的过程。
         串行化的对象中只有属性。
     10.2 XML
