@@ -46,9 +46,9 @@
 3.js封装对象
 
 4.ajax异步Javascript和xml
-
+    http头
 5.cookie
-
+    5.1
 6.正则表达式
 
 7.浏览器跨域问题
@@ -57,9 +57,23 @@
 
 9.数据类型与操作
 
-10.JSON（JavaScript Object Natation）
+10.JSON（JavaScript Object Notation）
     10.0 特点：格式容易进行串行化和反串行化，可以很好地表示对象及其数据。
-         区别：javascript是一种编程语言 vs JSON是一种数据格式
+         区别：javascript是一种编程语言 vs JSON是一种数据格式，只定义对象的结构和数据，没有变量,函数和方法。
+         eg.
+         Object:
+         var person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 30
+         };
+         JSON:
+         {
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 30
+         }
+         //json没有变量声明，没有结束的分号（语法）
     10.1 串行化：对象转化为字符串表示的过程。
         串行化的对象中只有属性。
     10.2 XML
@@ -70,5 +84,35 @@
         可以表示的对象：简单值，对象，数组
         10.3.1 简单值
             只能带双引号的字符串；
-            数字，布尔值，null表示为各自的字面量
+            数字，布尔值，null表示为各自的字面量。
+        10.3.2 对象：见 10.0 eg.
+        10.3.3 Array
+            基本格式：eg.
+                var values = ["John", 30, false, null];
+                JSON: ["John", 30, false, null]
+            其他：数组由对象和简单值作为数组项构成，分别按照 3.1 3.2 的方法按array的基本格式完成
+    10.4 串行化为JSON
+        eg.
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 30
+        };
+        var json = JSON.stringify(person);
+
+        则json变量为{"firstName":"John","lastName":"Doe","age":30}
+        删除空白，负载被优化，之后可进行发送（到web服务器）或进行存储
+    10.5 解析JSON
+        eg. 解析 10.4 中json变量为js对象
+            var johnDoe = JSON.parse(json);
 11.XML
+
+12.HTML5新特性
+
+13.闭包
+
+14.事件（监听，代理等）
+
+15.表单
+
+16.原型链
