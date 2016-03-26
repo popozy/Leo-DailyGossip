@@ -5,7 +5,7 @@
 */
 
 1.js 内置对象
-    1.0 常见内置对象：String, Math, Array, Date对象
+    1.1 常见内置对象：String, Math, Array, Date对象
     1.1 String
         var string = new String(“hello world”); or var string = “hello world” 后者在后台进行对象转换
         string’s attr: length没有’\0’结尾
@@ -43,7 +43,7 @@
         document.images : <img alt="" name="" src=""/>
         document.links : <a href = ""/>
 
-3.js封装与使用方式
+3.js封装对象
 
 4.ajax异步Javascript和xml
 
@@ -58,11 +58,17 @@
 9.数据类型与操作
 
 10.JSON（JavaScript Object Natation）
-    10.0 特点：格式容易进行串行化和反串行化
+    10.0 特点：格式容易进行串行化和反串行化，可以很好地表示对象及其数据。
+         区别：javascript是一种编程语言 vs JSON是一种数据格式
     10.1 串行化：对象转化为字符串表示的过程。
         串行化的对象中只有属性。
     10.2 XML
         Web服务使用XML与其他Web服务和其他计算机进行交流。js使用XML与web应用程序的服务器进行通信。
         使用声明性语法，易于阅读；但给有效数据在数据传输过程中所占的有效负载太低。
-
+    10.3 introduction
+        是js的一个子集，使用js几个语法模式来组织构造数据。
+        可以表示的对象：简单值，对象，数组
+        10.3.1 简单值
+            只能带双引号的字符串；
+            数字，布尔值，null表示为各自的字面量
 11.XML
