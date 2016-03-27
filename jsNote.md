@@ -71,6 +71,23 @@
                 other: error code
         4.3 异步
             每当request.status 发生改变的时候，会触发readystatechange事件，调用onreadystatechange事件处理程序。
+        4.4 构建Ajax模块来进行代码重用
+            eg.
+                HttpRequest模块-属性：request包含底层XMLHttpRequest对象，有send（）方法。
+                构造函数参数：请求服务器的url， callback
+                构造函数函数体：
+                    初始化request对象用new XMLHttpRequest对象；
+                    open初始化请求对象，
+                    绑定状态变更处理函数给onreadystatechange来处理readystatechage事件，并在其中callback或者处理error
+        4.5* ajax注意事项
+            安全性
+                同源策略：protocol domain port??
+                Crossing-Origin Resource Sharing:浏览器和服务器发送自定义http标题
+            可用性：
+                浏览器历史记录不能保存ajax使用过程中发送请求的对象-->back按钮失效？
+                使用内嵌框架支持back和forward按钮的表单
+                处理延迟（更好的用户体验）自行设计ui，js控制display属性解决
+                js被禁用ajax失败的正常退出---！！！！经验法则：先创建网页，在添加ajax
 5.cookie
     5.1 name, value
         name用来引用cookie，value包含cookie的信息
@@ -120,13 +137,13 @@
                 localStorage.clear();
         会话存储 Object: sessionStorage
 
-6.正则表达式
+6.正则表达式*
 
-7.浏览器跨域问题
+7.浏览器跨域问题**
 
-8.B/S AND C/S
+8.B/S AND C/S***
 
-9.数据类型与操作
+9.数据类型与操作*
 
 10.JSON（JavaScript Object Notation）
     10.0 特点：格式容易进行串行化和反串行化，可以很好地表示对象及其数据。
@@ -179,14 +196,14 @@
 
 11.XML
 
-12.HTML5新特性
+12.HTML5新特性**
 
-13.闭包
+13.闭包*（作用域问题）
 
-14.事件（监听，代理等）
+14.事件（监听，代理等）*
 
 15.表单
 
-16.原型链
+16.原型链*
 
 17.分支管理与版本控制
