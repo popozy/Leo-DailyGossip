@@ -70,7 +70,15 @@
     5.7 获取cookie的值
         document.cookie 返回某个路径下的所有cookie的字符串。
         获取某确定cookie的value：在document.cookie中通过字符串操作索引。
-        string.indexOf  未找到返回值为-1。
+        string.indexOf  未找到返回值为-1。可能涉及到的方法：indexOf(), substring(), escape().
+
+    5.8 the limit of cookie
+        a. the user may forbid the cookie of his browser
+           js 可以通过检查是否启用cookie（setcookie（）和getCookieValue()函数不会报错但是设置之后搜索name/value的结果为null)， 进而进行相关业务逻辑操作
+        b. 每个页面可存储的cookie存在上限，每个cookie的键值对的长度也有限制。解决方案1：每条cookie的键值对中value存储多个数据。
+    5.9 cookie分类
+        Session cookies - these are temporary and are erased when you close your browser at the end of your surfing session. The next time you visit that particular site it will not recognise you and will treat you as a completely new visitor as there is nothing in your browser to let the site know that you have visited before
+        Persistent cookies - these remain on your hard drive until you erase them or they expire. How long a cookie remains on your browser depends on how long the visited website has programmed the cookie to last
 6.正则表达式
 
 7.浏览器跨域问题
