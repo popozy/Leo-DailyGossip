@@ -39,8 +39,38 @@
 3.js封装对象
 
 4.ajax异步Javascript和xml
-    http头
+    4.1 http头
+    4.2 XMLHttpRequest 对象
+        创建： var request = new XMLHttpRequest();
+        method:
+            request.open(requestType, url, async); （请求类型，请求目标的url，是否异步发出请求），async default value: true;
+            requestType："GET" 请求不包含请求， request.send(null);
+                         "POST"
+            request.send(); send中是字符串，包含随请求一起发送的请求体。
+            request.onreadystatechange(); 异步请求时的readystatechange事件处理程序
+        Object:
+            request.status 服务器返回请求的状态码
+            request.responseXML
+            request.readyState 异步过程中请求生存期中的状态。
+            0-创建对象，但未open
+            1-open（）调用，未send（）
+            2-send（），状态和标题已接受并可用
+            3-接收到来自服务器的响应
+            4-接受完成请求数据
+            ？即使请求完成，也可能因为请求的服务器端发生错误而接收不到需要的信息。因此需要检查request.status
 
+        eg.请求获得一个myTextFile.txt文件并返回结果。
+            var request = new XMLHttpRequest();
+            request.open("GET", "http://localhost/myTextFile.txt", false);
+            request.send(null);
+
+            var status = request.status;
+            case status:
+                404: not found;
+                200: normal;
+                other: error code
+        4.3 异步
+            每当request.status 发生改变的时候，会触发readystatechange事件，调用onreadystatechange事件处理程序。
 5.cookie
     5.1 name, value
         name用来引用cookie，value包含cookie的信息
@@ -75,14 +105,25 @@
     5.8 the limit of cookie
         a. the user may forbid the cookie of his browser
            js 可以通过检查是否启用cookie（setcookie（）和getCookieValue()函数不会报错但是设置之后搜索name/value的结果为null)， 进而进行相关业务逻辑操作
-        b. 每个页面可存储的cookie存在上限，每个cookie的键值对的长度也有限制。解决方案1：每条cookie的键值对中value存储多个数据。
+        b. 每个页面可存储的cookie存在上限，每个cookie的name/值对的长度也有限制。解决方案1：每条cookie的name/值对中value存储多个数据。
     5.9 cookie分类
         Session cookies - these are temporary and are erased when you close your browser at the end of your surfing session. The next time you visit that particular site it will not recognise you and will treat you as a completely new visitor as there is nothing in your browser to let the site know that you have visited before
         Persistent cookies - these remain on your hard drive until you erase them or they expire. How long a cookie remains on your browser depends on how long the visited website has programmed the cookie to last
+    5.10 cookie 安全性
+        the platformor privacy preferency
+    5.11 Web存储
+        本地存储 Object: localStorage 数据不会丢失，除非被删除
+            方法：
+                localStorage.setItem("User Name", "Paul");
+                var name = localStorage.getItem("User Name");
+                localStorage.removeItem("User Name");
+                localStorage.clear();
+        会话存储 Object: sessionStorage
+
 6.正则表达式
 
 7.浏览器跨域问题
-6
+
 8.B/S AND C/S
 
 9.数据类型与操作
