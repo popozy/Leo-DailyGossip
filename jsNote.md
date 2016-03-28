@@ -39,7 +39,40 @@
 3.js封装对象
 
 4.ajax异步Javascript和xml
-    4.1 http头
+
+    4.1 http头*
+    HTTP头字段 ， 指的是在超文本传输协议 (HTTP)的请求和回复消息中，协议头部分的那些组件。它们定义了某个超文本传输协议事务中的操作参数。
+        请求：
+        请求行：
+            请求方法 请求路径 协议版本号 /r/n
+            GET / HTTP/1.1 /r/n
+            http协议版本：0.9 1.0 1.1
+        请求头：
+            key: value;
+            eg.
+                Host: 主机名
+                Connection:该浏览器想要优先使用的连接类型 keep-alive 一个连接可以发出多个请求
+                UserAgent: 请求发送者，服务器可以返回定制化需求
+                Content-type：请求的多媒体类型
+        请求体：可选，可为空
+
+        响应报文格式：
+        状态行：http协议版本号 状态码 原因 /r/n
+            eg. HTTP/1.1 200 OK /r/n
+            常见状态码：
+            200
+            3* 缓存相关
+            404 not found
+            500 服务器端内部错误
+        响应头：
+            key/value /r/n
+            eg.
+            server:Web服务器的应用程序
+            Content-type：指定响应的多媒体类型
+            content-length: 请求体的资源长度
+        响应体：
+            与状态头以空行分割
+            可以是二进制或者文本，大小有content-length限定
     4.2 XMLHttpRequest 对象
         创建： var request = new XMLHttpRequest();
         method:
@@ -64,14 +97,18 @@
             request.open("GET", "http://localhost/myTextFile.txt", false);
             request.send(null);
 
+            xmlhttp.open("POST","ajax_test.asp",true);
+            xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xmlhttp.send("fname=Bill&lname=Gates");
+
             var status = request.status;
             case status:
                 404: not found;
                 200: normal;
                 other: error code
-        4.3 异步
+    4.3 异步
             每当request.status 发生改变的时候，会触发readystatechange事件，调用onreadystatechange事件处理程序。
-        4.4 构建Ajax模块来进行代码重用
+    4.4 构建Ajax模块来进行代码重用
             eg.
                 HttpRequest模块-属性：request包含底层XMLHttpRequest对象，有send（）方法。
                 构造函数参数：请求服务器的url， callback
@@ -79,7 +116,7 @@
                     初始化request对象用new XMLHttpRequest对象；
                     open初始化请求对象，
                     绑定状态变更处理函数给onreadystatechange来处理readystatechage事件，并在其中callback或者处理error
-        4.5* ajax注意事项
+    4.5* ajax注意事项
             安全性
                 同源策略：protocol domain port??
                 Crossing-Origin Resource Sharing:浏览器和服务器发送自定义http标题
@@ -138,7 +175,42 @@
         会话存储 Object: sessionStorage
 
 6.正则表达式*
+    6.1 introduction
+        正则表达式是一种定义字符模式的方法，我们可以拆分、查找替换字符串中与字符模式匹配的字符。
+        正则表达式通过RegExp对象创建或者通过字面量直接复制。
+        eg.
+            var a = new RegExp("\\b'|'\\b");
+            var a = /\b'|'\b/;
+    6.2 参数
+        G 全局匹配
+        I 模式不区分大小写
+        M 多行标志
+        var myRegExp = /Paul/gi;
+    6.3 特殊字符
+        \d,0~9
+        \D 任何非数字字符
+        \w 任何单词字符 A~Z a~z 0~9 _
+        \W 任何非单词字符 如@
+        \s 任何空白字符 如制表符，回车符等
+        \S 任何非空白字符
+        . 除换行符之外的任何字符
+        [...] 匹配中括号内的任意一个字符
+        [^...] 匹配除中括号内的一切任意一个字符
 
+        重复字符
+            {m} 出现m次
+            {m,} 出现 >= m次
+            {m,n} m<= <=n
+            ? 0/1
+            + >=1
+            * >=0
+            eg. \d-\d{3}-\d{3}
+
+        位置字符
+            ^  模式位于字符串开头
+            $ 模式位于字符串结尾
+            \b 匹配单词分界，单词字符和非单词字符之间的位置
+            \B 匹配非单词分界
 7.浏览器跨域问题**
 
 8.B/S AND C/S***
@@ -201,6 +273,18 @@
 13.闭包*（作用域问题）
 
 14.事件（监听，代理等）*
+    w3c引入DOM标准包含的标准事件模型：
+    事件注册：addEventListener(trigger, callback);
+    事件注销：removeEventListner(trigger, callback);
+
+    注册新的事件监听器：
+    1. 检查是否支持标准的dom事件模型
+    2. 如果支持，使用
+    3. 不支持， attachEvent();
+
+    事件代理：
+    "http://www.cnblogs.com/owenChen/archive/2013/02/18/2915521.html"
+
 
 15.表单
 
