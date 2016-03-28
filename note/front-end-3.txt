@@ -1,0 +1,31 @@
+3.1开发调试工具
+记事本
+文本编辑器：
+Sublime text
+notepad++
+EditPlus
+IDE:
+webstorm
+ItelliJ
+Eclipse
+
+Sublime TExt:
+支持vim兼容
+
+快捷键：
+查找ctrl+p
+: line number  ctrl+g
+@ signal（函数） ctrl+r
+# 匹配关键字  ctrl+；
+
+ctrl+shift+p：命令面板（模糊匹配）
+
+多行选择：ctrl+d/ctrl+shift+l
+选中全部变量：alt+F3
+
+3.1.3常用插件
+Package Control:添加更新卸载相应插件
+Emmet：
+docblockr
+sidebarenhancements
+terminal

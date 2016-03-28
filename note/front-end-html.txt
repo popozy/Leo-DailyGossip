@@ -1,0 +1,67 @@
+html
+1.标签：
+1.1元数据和脚本相关：
+id(no repeat)
+class(repeat allowed)
+style(suggest not in html)
+title
+
+1.2 文档相关：
+1.2.1 文档章节：
+body(unvisible)
+hx
+html5:
+header
+nav
+aside
+article
+section
+footer
+
+html5中根据页面模块分类（头部，主体，尾部）
+方法一：1.div
+方法二：
+header(标题logo，搜索表单)
+nav:导航性质的内容
+article(<section>)):主体内容
+aside：和主要内容不相关的区域
+footer
+
+标题hx(x= 1,2,3,4,5,6)
+
+1.3 文本相关
+1.3.1超链接：
+<a>
+创建指向另一个文档的连接
+eg.
+<a href ="http://tech.163.com/">科技</a>
+<a href ="http://ent.163.com/movie" target="_self">电影</a> 
+target：_self(default)在当前窗口显示，_blank另建窗口显示
+
+1.3.2 创建文档内部锚点：
+format:
+<a href = "#pay">....</a>
+需要跳转的地方<div id = "pay">...</div>
+
+1.3.3连接到email地址或者telnum
+<a href = "mailto:.... , .....">contact with us</a>
+<a href = "tel：....">....</a>
+<a href = "mailto:.... , .....?cc=........com&subject=suggest&body=body....">contact with us</a>
+
+2.文本相关
+2.1强调
+<strong>content</strong>
+or em
+
+2.2 不同的样式
+<span>无语义。
+
+2.3引用
+cite 引用出处（前后双引号）
+q
+code
+br 换行符
+
+格式化：
+b粗体
+i斜体
