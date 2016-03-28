@@ -212,7 +212,57 @@
             \b 匹配单词分界，单词字符和非单词字符之间的位置
             \B 匹配非单词分界
 7.浏览器跨域问题**
-跨域方法
+    7.1 概念
+        url的协议，端口号，域名有任何一个不一样都被当做不同的域形成跨域。
+    7.2 跨域方法:
+        Crossing-Origin Resource Sharing
+        前端配置：
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://www.haorooms.com/CORS", true); //ie6以下, new ActiveObject("Microsoft.XMLHTTP");
+        xhr.send();
+        后端配置：
+        Apache:
+            Header set Access-control-allow-origin *
+        php: <?php header("Access-Control-Allow-Origin:*");
+
+        *为当前服务器允许的跨域url。
+        ？？Nginx+php设置
+
+        jsonp
+        前端配置：
+            <script>
+                function dosth(jsondata){
+                    //处理获得的json数据
+                }
+            </script>
+            <script src="http://haorooms.com/data.php>callback=dosth"></script>
+        后端配置：
+            <?php $callback = $_GET['callback'] //得到回调函数名
+            $data = array('a', 'b', 'c'); //需要返回的数据
+            echo $callback.'('.json_encode($data).')';  //输出
+
+        document.domain 跨子域(只适用于不同子域的框架之间的交互)
+        在页面 "http:// www.haorooms.com/a.html 中设置document.domain"
+            <iframe id = "iframe" src="http://haorooms.com/b.html" onload = "test()"></iframe>
+            <script type="text/javascript">
+               document.domain = 'haorooms.com';//设置成主域
+               function test(){
+                alert(document.getElementById('￼iframe').contentWindow);//contentWindow 可取得子窗口的 window 对象
+                }
+            </script>
+        在页面"http:// haorooms.com/b.html 中设置document.domain"
+            <script type="text/javascript">
+                document.domain = 'haorooms.com';//在iframe载入这个页面也设置document.domain，使之与主页面的document.domain相同
+            </script>
+
+        window.name
+
+        html5 window.postMessage()
+    7.3 cros vs jsonp
+        a、 JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求。
+        b、 使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理。
+        c、 JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS。[低版本IE7以下不支持，要支持IE7还是要用jsonp方式]
+jsonp
 
 8.B/S AND C/S***
 
@@ -272,6 +322,32 @@
 12.HTML5新特性**
 
 13.闭包*（作用域问题）
+    "https://zh.wikipedia.org/wiki/闭包_(计算机科学)"
+    js变量分为全局变量和局部变量，根据变量作用域，函数内部的局部变量正常情况下无法被外部拿到，因此可以通过闭包把内部函数和外部函数联系起来。
+    简单说，闭包就是能够读取其他函数内部变量的函数。
+    闭包的作用：读取函数内部的变量；让变量始终保持在内存中。
+    原理：eg.
+    function f1(){
+        var n = 999;
+        nAdd = function(){n+=1;}    //这伙计是全局变量也是闭包。
+
+        function f2(){
+            alert(n);
+        }
+
+        return f2;
+    }
+
+    var result = f1();
+    result();   //999
+    nAdd();
+    result(); //1000
+
+    result是闭包f2函数，nAdd全局函数一共运行两次，证明f1中的局部变量n始终存在于内存当中。原因：f1是f2的父函数，f2被赋予了一个全局变量result，因此f2存在于内存->f1存在于内存当中，不会被garbage collection回收。
+
+    使用的注意点：
+        内存消耗大，不能滥用闭包否则会影响网页性能。IE中导致内存泄露。解决方法：退出函数之前，将不使用的局部变量全部删除。
+        闭包会在父函数外部，改变父函数内部变量的值。所以，如果把父函数当作类（class）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。
 
 14.事件（监听，代理等）*
     w3c引入DOM标准包含的标准事件模型：
@@ -294,5 +370,7 @@
 17.分支管理与版本控制
 
 18. 前端自动化方法
-
+    "http://www.alloyteam.com/2014/03/frontend-workflow/"
 19. 前端常用框架
+
+
