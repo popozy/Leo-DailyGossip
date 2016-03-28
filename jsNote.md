@@ -322,7 +322,7 @@ jsonp
 12.HTML5新特性**
 
 13.闭包*（作用域问题）
-    "https://zh.wikipedia.org/wiki/闭包_(计算机科学)"
+    "https://en.wikipedia.org/wiki/Closure_(computer_programming)"
     js变量分为全局变量和局部变量，根据变量作用域，函数内部的局部变量正常情况下无法被外部拿到，因此可以通过闭包把内部函数和外部函数联系起来。
     简单说，闭包就是能够读取其他函数内部变量的函数。
     闭包的作用：读取函数内部的变量；让变量始终保持在内存中。
