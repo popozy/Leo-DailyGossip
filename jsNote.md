@@ -53,7 +53,7 @@
                 Host: 主机名
                 Connection:该浏览器想要优先使用的连接类型 keep-alive 一个连接可以发出多个请求
                 UserAgent: 请求发送者，服务器可以返回定制化需求
-                Content-type：请求的多媒体类型
+                Content-type： 请求的多媒体类型
         请求体：可选，可为空
 
         响应报文格式：
