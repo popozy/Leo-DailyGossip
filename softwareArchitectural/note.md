@@ -29,3 +29,5 @@ Answer:(?) By check point, get the latest right state previous in disk.
 1. response measure
 Jitter ?
 
+**Modifiability**
+1. Intermediary modifiability~performance?
