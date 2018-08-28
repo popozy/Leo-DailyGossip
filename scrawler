@@ -1,0 +1,39 @@
+# coding=utf-8
+import urllib
+
+import scrapy
+
+
+class CompanySpider(scrapy.Spider):
+    name = "scrawlerChina"
+    start_urls = [
+        "http://china.99114.com/",
+    ]
+
+    def parse(self, response):
+        for href in response.css("div.left_qghy a::attr(href)"):
+                yield response.follow(href, self.parse_serial)
+
+
+    def parse_serial(self, response):
+        for href in response.css("div.left_qyhy a::attr(href)"):
+            yield response.follow(href, self.parse_company)
+
+    def parse_company(self, response):
+        for title in response.css("ul.company_list div.company_list_text"):
+            yield {
+                "text": title.css("a::text").extract_first()
+            }
+
+        # for next in response
+
+        # for title in response.css("div.g"):
+        #     yield {
+        #         "text": str(title.css("h3.r a::text").extract_first()) + str(title.css("h3.r a b::text").extract_first())
+        #     }
+        #
+        # next_url = "https://www.google.com" + response.css("td.b a::attr(href)").extract()[1]
+        # print "nexturl:" + response.css("td.b a::attr(href)").extract()[1]
+        # next_response = response.replace(url=next_url)
+        # if next_response is not None:
+        #     yield scrapy.Request(next_response.url, callback=self.parse)
